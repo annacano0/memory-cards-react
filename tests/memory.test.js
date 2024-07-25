@@ -33,8 +33,8 @@ defineFeature(feature, (test) => {
       steps.setMockData(mockData)
     })
 
-    when(/^the player right clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
-      steps.rightClickCard(rowPosition, colPosition)
+    when(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
+      steps.leftClickCard(rowPosition, colPosition)
     })
 
     then(/^the card \("(.*)", "(.*)"\) should be flipped$/, (rowPosition, colPosition) => {
@@ -51,11 +51,11 @@ defineFeature(feature, (test) => {
       pending()
     })
 
-    and(/^the player right clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
+    and(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
       pending()
     })
 
-    and(/^the player right clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
+    and(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
       pending()
     })
 
@@ -73,11 +73,11 @@ defineFeature(feature, (test) => {
       pending()
     })
 
-    and(/^the player right clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
+    and(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
       pending()
     })
 
-    when(/^the player right clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
+    when(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
       pending()
     })
 
@@ -99,7 +99,7 @@ defineFeature(feature, (test) => {
       pending()
     })
 
-    when(/^the player right clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
+    when(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
       pending()
     })
 
@@ -125,7 +125,7 @@ defineFeature(feature, (test) => {
       pending()
     })
 
-    when(/^the player right clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
+    when(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
       pending()
     })
 

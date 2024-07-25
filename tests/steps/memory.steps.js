@@ -33,7 +33,7 @@ export function allCardsUnflipped() {
 
 export function setMockData(mockData) {
     let data=mockData.trim()
-    fireEvent.keyDown(screen.getByTestId('app'), {
+    fireEvent.keyDown(screen.getByTestId('board'), {
       key: 'm',
       keyCode: 77,
       which: 77,
@@ -52,7 +52,7 @@ export function setMockData(mockData) {
     fireEvent.click(submitButton)
 }
 
-export function rightClickCard(rowPosition, colPosition){
+export function leftClickCard(rowPosition, colPosition){
   let card = screen.getByTestId("board-card"+ rowPosition +"-"+colPosition)
   fireEvent.click(card)
 }

@@ -46,7 +46,7 @@ Feature: Memory
         """
         | 1 | 1 |
         """
-        When the player right clicks on the card ("1", "1")    
+        When the player left clicks on the card ("1", "1")    
         Then the card ("1", "1") should be flipped
 
     Scenario: Flipping a card already flipped - Clicking over a card already flipped
@@ -54,8 +54,8 @@ Feature: Memory
         """
         | 1 | 1 |
         """
-        And the player right clicks on the card ("1", "1")  
-        And the player right clicks on the card ("1", "1")    
+        And the player left clicks on the card ("1", "1")  
+        And the player left clicks on the card ("1", "1")    
         Then the card ("1", "1") should be flipped
 
     Scenario: Flipping two cards - Default scenario
@@ -64,8 +64,8 @@ Feature: Memory
         | 2 | 1 |
         | 1 | 2 |
         """
-        And the player right clicks on the card ("1", "1") 
-        When the player right clicks on the card ("1", "2")
+        And the player left clicks on the card ("1", "1") 
+        When the player left clicks on the card ("1", "2")
         Then the card ("1", "1") and the card ("1", "2") should be flipped
 
     Scenario: Flipping two cards - Unflipping after not matching  
@@ -75,7 +75,7 @@ Feature: Memory
         | 1 | 2 |
         """
         And the card ("1", "1") and the card ("1", "2") are unflipped
-        When the player right clicks on the card ("2", "1")  
+        When the player left clicks on the card ("2", "1")  
         Then the card ("2", "1") should be flipped
         And the card ("1", "1") and the card ("1", "2") should be unflipped
 
@@ -86,6 +86,6 @@ Feature: Memory
         | 1 | 2 |
         """
         And the card ("1", "1") and the card ("2", "2") are unflipped
-        When the player right clicks on the card ("2", "1")  
+        When the player left clicks on the card ("2", "1")  
         Then the card ("2", "1") should be flipped
         Then the card ("1", "1") and the card ("1", "2") should be flipped
