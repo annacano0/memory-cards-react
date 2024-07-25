@@ -1,0 +1,9 @@
+{
+    "standard.options": {
+      "env" : ["jest"]
+    },
+    "cucumberautocomplete.syncfeatures": "tests/**/*.feature",
+    "cucumberautocomplete.steps": [
+      "tests/**/*.js"
+    ],
+  }
