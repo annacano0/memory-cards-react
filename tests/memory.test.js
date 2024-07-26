@@ -106,7 +106,7 @@ defineFeature(feature, (test) => {
       pending()
     })
 
-    then(/^the card \("(.*)", "(.*)"\) and the card \("(.*)", "(.*)"\) should be flipped$/, (card1RowPos, card1ColPos, card2RowPos, card2ColPos) => {
+    then(/^the card \("(.*)", "(.*)"\) and the card \("(.*)", "(.*)"\) should be unflipped$/, (card1RowPos, card1ColPos, card2RowPos, card2ColPos) => {
       pending()
     })
   })
