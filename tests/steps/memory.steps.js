@@ -59,5 +59,5 @@ export function leftClickCard(rowPosition, colPosition){
 
 export function checkCardIsFlipped(rowPosition, colPosition){ //TODO: to be implemented
   let card =  screen.getByTestId("board-card"+ rowPosition +"-"+colPosition)
-  return card.classList.contains("unflipped")
+  return !card.classList.contains("unflipped")
 }
