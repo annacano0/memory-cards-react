@@ -61,8 +61,8 @@ Feature: Memory
     Scenario: Flipping two cards - Default scenario
         Given the player loads the following mock data
         """
-        | 2 | 1 |
-        | 1 | 2 |
+        | 2 | 2 |
+        | 1 | 1 |
         """
         And the player left clicks on the card ("1", "1") 
         When the player left clicks on the card ("1", "2")
@@ -71,13 +71,13 @@ Feature: Memory
     Scenario: Flipping two cards - Unflipping after not matching  
         Given the player loads the following mock data
         """
-        | 2 | 1 |
-        | 1 | 2 |
+        | 2 | 2 |
+        | 1 | 1 |
         """
-        And the card ("1", "1") and the card ("1", "2") are unflipped
-        When the player left clicks on the card ("2", "1")  
-        Then the card ("2", "1") should be flipped
-        And the card ("1", "1") and the card ("1", "2") should be unflipped
+        And the player left clicks on the card ("1", "1") 
+        And the player left clicks on the card ("1", "2")
+        When "3" seconds pass
+        Then the card ("1", "1") and the card ("1", "2") should be unflipped
 
     Scenario:Flipping two cards - Flipping other cards after a match
         Given the player loads the following mock data

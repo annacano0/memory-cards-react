@@ -95,19 +95,18 @@ defineFeature(feature, (test) => {
       pending()
     })
 
-    and(/^the card \("(.*)", "(.*)"\) and the card \("(.*)", "(.*)"\) are unflipped$/, (card1RowPos, card1ColPos, card2RowPos, card2ColPos) => {
+    and(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
       pending()
     })
 
-    when(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
+    and(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
+      pending()
+    })
+    when(/^"(.*)" seconds pass$/, (seconds) => {
       pending()
     })
 
-    then(/^the card \("(.*)", "(.*)"\) should be flipped$/, (rowPos, colPos) => {
-      pending()
-    })
-
-    and(/^the card \("(.*)", "(.*)"\) and the card \("(.*)", "(.*)"\) should be unflipped$/, (card1RowPos, card1ColPos, card2RowPos, card2ColPos) => {
+    then(/^the card \("(.*)", "(.*)"\) and the card \("(.*)", "(.*)"\) should be flipped$/, (card1RowPos, card1ColPos, card2RowPos, card2ColPos) => {
       pending()
     })
   })
