@@ -1,24 +1,35 @@
+'use client'
+import {useState} from 'react'
+import {useEffect} from 'react'
+import MockDataForm from "./MockDataForm"
+import Board from "./Board"
+
 export default function Game () {
+  const [mockData, setMockData] = useState('')
+  const [mockDataFormVisible, setMockDataFormVisible] = useState(false)
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyPress)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [handleKeyPress])
+
+  function handleKeyPress(e){
+    if (e.ctrlKey && e.key.toUpperCase() === 'M') {
+      setMockDataFormVisible(!mockDataFormVisible)
+    }
+  }
+
+  function handleMockData(newMockData){
+    setMockData(newMockData)
+  }
+
   return (
     <>
-      <div data-test-id='board-row'>
-        <div data-testid='board-card' className='unflipped' />
-        <div data-testid='board-card' className='unflipped' />
-        <div data-testid='board-card' className='unflipped' />
-        <div data-testid='board-card' className='unflipped' />
-      </div>
-      <div data-test-id='board-row'>
-        <div data-testid='board-card' className='unflipped' />
-        <div data-testid='board-card' className='unflipped' />
-        <div data-testid='board-card' className='unflipped' />
-        <div data-testid='board-card' className='unflipped' />
-      </div>
-      <div data-test-id='board-row'>
-        <div data-testid='board-card' className='unflipped' />
-        <div data-testid='board-card' className='unflipped' />
-        <div data-testid='board-card' className='unflipped' />
-        <div data-testid='board-card' className='unflipped' />
-      </div>
+      {mockDataFormVisible && <MockDataForm setNewMockData={handleMockData}/>}
+      <Board mockData={mockData}/>
     </>
   )
 }
