@@ -70,19 +70,21 @@ defineFeature(feature, (test) => {
     })
 
     given('the player loads the following mock data', (mockData) => {
-      pending()
+      steps.setMockData(mockData)
     })
 
     and(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
-      pending()
+      steps.leftClickCard(rowPosition, colPosition)
     })
 
     when(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
-      pending()
+      steps.leftClickCard(rowPosition, colPosition)
     })
 
     then(/^the card \("(.*)", "(.*)"\) and the card \("(.*)", "(.*)"\) should be flipped$/, (card1RowPos, card1ColPos, card2RowPos, card2ColPos) => {
-      pending()
+      expect(steps.checkCardIsFlipped(card1RowPos, card1ColPos)).toBe(true)
+      expect(steps.checkCardIsFlipped(card2RowPos, card2ColPos)).toBe(true)
+
     })
   })
 
@@ -92,7 +94,7 @@ defineFeature(feature, (test) => {
     })
 
     given('the player loads the following mock data', (mockData) => {
-      pending()
+      steps.setMockData(mockData)
     })
 
     and(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
@@ -117,7 +119,7 @@ defineFeature(feature, (test) => {
     })
 
     given('the player loads the following mock data', (mockData) => {
-      pending()
+      steps.setMockData(mockData)
     })
 
     and(/^the card \("(.*)", "(.*)"\) and the card \("(.*)", "(.*)"\) are unflipped$/, (card1RowPos, card1ColPos, card2RowPos, card2ColPos) => {
