@@ -61,3 +61,9 @@ export function checkCardIsFlipped(rowPosition, colPosition){ //TODO: to be impl
   let card =  screen.getByTestId("board-card"+ rowPosition +"-"+colPosition)
   return !card.classList.contains("unflipped")
 }
+
+export function addTimeout(seconds) {
+  setTimeout(() => {
+    console.log(`${seconds} seconds passed`);
+  }, seconds * 1000);
+}

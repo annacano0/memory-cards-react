@@ -98,18 +98,19 @@ defineFeature(feature, (test) => {
     })
 
     and(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
-      pending()
+      steps.leftClickCard(rowPosition, colPosition)
     })
 
     and(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
-      pending()
+      steps.leftClickCard(rowPosition, colPosition)
     })
     when(/^"(.*)" seconds pass$/, (seconds) => {
-      pending()
+      steps.addTimeout(seconds)
     })
 
     then(/^the card \("(.*)", "(.*)"\) and the card \("(.*)", "(.*)"\) should be unflipped$/, (card1RowPos, card1ColPos, card2RowPos, card2ColPos) => {
-      pending()
+      expect(steps.checkCardIsFlipped(card1RowPos, card1ColPos)).toBe(false)
+      expect(steps.checkCardIsFlipped(card2RowPos, card2ColPos)).toBe(false)
     })
   })
 
