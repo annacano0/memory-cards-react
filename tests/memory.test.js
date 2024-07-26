@@ -14,7 +14,7 @@ defineFeature(feature, (test) => {
     })
   })
 
-  test('Starting the game - All cards should be unflipped', ({ given, then, pending }) => {
+  test('Starting the game - All cards should be unflipped', ({ given, then }) => {
     given('the player opens the game', () => {
       steps.openTheGame()
     })
@@ -24,7 +24,7 @@ defineFeature(feature, (test) => {
     })
   })
 
-  test('Flipping a card - Clicking over a card', ({ given, when, then, pending }) => {
+  test('Flipping a card - Clicking over a card', ({ given, when, then }) => {
     given('the player opens the game', () => {
       steps.openTheGame()
     })
@@ -42,25 +42,25 @@ defineFeature(feature, (test) => {
     })
   })
 
-  test('Flipping a card already flipped - Clicking over a card already flipped', ({ given, and, then, pending }) => {
+  test('Flipping a card already flipped - Clicking over a card already flipped', ({ given, and, then }) => {
     given('the player opens the game', () => {
       steps.openTheGame()
     })
 
     given('the player loads the following mock data', (mockData) => {
-      pending()
+      steps.setMockData(mockData)
     })
 
     and(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
-      pending()
+      steps.leftClickCard(rowPosition, colPosition)
     })
 
     and(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
-      pending()
+      steps.leftClickCard(rowPosition, colPosition)
     })
 
     then(/^the card \("(.*)", "(.*)"\) should be flipped$/, (rowPosition, colPosition) => {
-      pending()
+      expect(steps.checkCardIsFlipped(rowPosition, colPosition)).toBe(true)
     })
   })
 
