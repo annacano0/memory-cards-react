@@ -4,7 +4,7 @@ export default function Card({rowIndex, columnIndex, cardNumber}) {
     const [isCovered, setIsCovered] = useState(true)
 
     function handleClickCard() {
-        setIsCovered(!isCovered)
+        setIsCovered(false)
     }
 
 
