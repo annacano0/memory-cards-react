@@ -71,8 +71,8 @@ Feature: Memory
     Scenario: Flipping two cards - Unflipping after not matching  
         Given the player loads the following mock data
         """
-        | 2 | 2 |
-        | 1 | 1 |
+        | 2 | 1 |
+        | 2 | 1 |
         """
         And the player left clicks on the card ("1", "1") 
         And the player left clicks on the card ("1", "2")
