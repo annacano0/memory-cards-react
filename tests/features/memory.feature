@@ -85,7 +85,7 @@ Feature: Memory
         | 2 | 1 |
         | 1 | 2 |
         """
-        And the card ("1", "1") and the card ("2", "2") are unflipped
+        And the card ("1", "1") and the card ("2", "2") are flipped
         When the player left clicks on the card ("2", "1")  
         Then the card ("2", "1") should be flipped
         Then the card ("1", "1") and the card ("1", "2") should be flipped

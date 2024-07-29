@@ -64,7 +64,7 @@ defineFeature(feature, (test) => {
     })
   })
 
-  test('Flipping two cards - Default scenario', ({ given, and, when, then, pending }) => {
+  test('Flipping two cards - Default scenario', ({ given, and, when, then }) => {
     given('the player opens the game', () => {
       steps.openTheGame()
     })
@@ -114,7 +114,7 @@ defineFeature(feature, (test) => {
     })
   })
 
-  test('Flipping two cards - Flipping other cards after a match', ({ given, and, when, then, pending }) => {
+  test('Flipping two cards - Flipping other cards after a match', ({ given, and, when, then }) => {
     given('the player opens the game', () => {
       steps.openTheGame()
     })
@@ -123,20 +123,22 @@ defineFeature(feature, (test) => {
       steps.setMockData(mockData)
     })
 
-    and(/^the card \("(.*)", "(.*)"\) and the card \("(.*)", "(.*)"\) are unflipped$/, (card1RowPos, card1ColPos, card2RowPos, card2ColPos) => {
-      pending()
+    and(/^the card \("(.*)", "(.*)"\) and the card \("(.*)", "(.*)"\) are flipped$/, (card1RowPos, card1ColPos, card2RowPos, card2ColPos) => {
+      steps.leftClickCard(card1RowPos, card1ColPos)
+      steps.leftClickCard(card2RowPos, card2ColPos)
     })
 
     when(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
-      pending()
+      steps.leftClickCard(rowPosition, colPosition)
     })
 
     then(/^the card \("(.*)", "(.*)"\) should be flipped$/, (rowPos, colPos) => {
-      pending()
+      expect(steps.checkCardIsFlipped(rowPos, colPos)).toBe(true)
     })
 
     and(/^the card \("(.*)", "(.*)"\) and the card \("(.*)", "(.*)"\) should be flipped$/, (card1RowPos, card1ColPos, card2RowPos, card2ColPos) => {
-      pending()
+      expect(steps.checkCardIsFlipped(card1RowPos, card1ColPos)).toBe(true)
+      expect(steps.checkCardIsFlipped(card2RowPos, card2ColPos)).toBe(true)
     })
   })
 })
