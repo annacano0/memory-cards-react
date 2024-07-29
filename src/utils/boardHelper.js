@@ -29,10 +29,8 @@ export function createNewBoardFromMockData(mockData) {
     let parsedMockData = mockData
     if (typeof mockData === 'string' && mockData.includes('|')){
         parsedMockData = parseMockDataToString(mockData)
-        console.log("parsed mock data: "+  (typeof parsedMockData))
     }
     if (validateMockData(parsedMockData)) {
-        console.log("validado mock data")
         let mockBoard = parsedMockData.split('-')
         mockBoard = mockBoard.map((row) => { return row.split('') })
         for (let row = 0; row < mockBoard.length; row += 1) {
@@ -46,9 +44,6 @@ export function createNewBoardFromMockData(mockData) {
             }
         }
     }
-    console.log("se genera un board del mock:")
-    console.log(board)
-
     return board
 }
 

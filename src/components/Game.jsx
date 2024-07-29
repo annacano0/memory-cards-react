@@ -8,6 +8,7 @@ export default function Game () {
   const [mockData, setMockData] = useState('')
   const [mockDataFormVisible, setMockDataFormVisible] = useState(false)
 
+
   useEffect(() => {
     document.addEventListener('keydown', handleKeyPress)
 

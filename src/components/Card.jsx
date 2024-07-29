@@ -1,16 +1,24 @@
-import {useState } from "react";
+import {useEffect} from 'react'
+export default function Card({ cardData, isMatched, handleCardReveal, isCovered}) {
 
-export default function Card({rowIndex, columnIndex, cardNumber}) {
-    const [isCovered, setIsCovered] = useState(true)
+    useEffect(() => {
+        function hola() {
+           console.log("update de isCovered ")
+        }
+        hola();
+    }, [isCovered]);
 
     function handleClickCard() {
-        setIsCovered(false)
+        if(!isMatched&&isCovered){
+            handleCardReveal(cardData)
+        } 
     }
-
 
     return (
         <>
-            <button onClick={handleClickCard} className={`board-card ${isCovered ? 'unflipped' : 'flipped'}`} data-testid={`board-card${rowIndex + 1}-${columnIndex + 1}`} >{cardNumber}</button>
+            <button onClick={handleClickCard} 
+            className={`board-card ${(isCovered) ? 'unflipped' : 'flipped'}`} 
+            data-testid={`board-card${cardData.y + 1}-${cardData.x + 1}`} >{!isCovered && cardData.cardNumber}</button>
         </>
     )
 }
