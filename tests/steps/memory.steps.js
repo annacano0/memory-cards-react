@@ -1,5 +1,4 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import Page from '../../src/app/page'
 import Game from '../../src/components/Game'
 
@@ -57,13 +56,15 @@ export function leftClickCard(rowPosition, colPosition){
   fireEvent.click(card)
 }
 
-export function checkCardIsFlipped(rowPosition, colPosition){ //TODO: to be implemented
-  let card =  screen.getByTestId("board-card"+ rowPosition +"-"+colPosition)
-  return !card.classList.contains("unflipped")
+export function checkCardIsFlipped(rowPosition, colPosition) {
+    let card = screen.getByTestId(`board-card${rowPosition}-${colPosition}`);
+    return !card.classList.contains("unflipped");
 }
 
 export function addTimeout(seconds) {
-  setTimeout(() => {
-    console.log(`${seconds} seconds passed`);
-  }, seconds * 1000);
+  return new Promise(resolve => {
+    setTimeout(() => {
+        resolve();
+    }, seconds * 1000);
+});
 }

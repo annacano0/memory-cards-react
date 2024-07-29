@@ -104,8 +104,8 @@ defineFeature(feature, (test) => {
     and(/^the player left clicks on the card \("(.*)", "(.*)"\)$/, (rowPosition, colPosition) => {
       steps.leftClickCard(rowPosition, colPosition)
     })
-    when(/^"(.*)" seconds pass$/, (seconds) => {
-      steps.addTimeout(seconds)
+    when(/^"(.*)" seconds pass$/, async (seconds) => {
+      await steps.addTimeout(seconds)
     })
 
     then(/^the card \("(.*)", "(.*)"\) and the card \("(.*)", "(.*)"\) should be unflipped$/, (card1RowPos, card1ColPos, card2RowPos, card2ColPos) => {
