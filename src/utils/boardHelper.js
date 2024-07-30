@@ -57,20 +57,24 @@ function parseMockDataToString(data) {
     return strData
 }
 
-function validateMockData(mockData) {//TODO: validar si son numeros :)
+function validateMockData(mockData) {
     let isValidaData=true
     if (mockData === undefined || mockData == '' || typeof mockData != 'string') {
         isValidaData = false
     } else {
         if (mockData.includes('-')) {
+            console.log("entra en validate mock data rows")
             isValidaData = validateMockDataRows(mockData.split('-'))
         }
     }
     return isValidaData
 }
 
-function validateMockDataRows(){
-    //TODO: to implement
+function validateMockDataRows(mockDataRow){
+    const newLocal = '^[[1-9]*'
+    const regex = new RegExp(newLocal)
+    console.log("regex is: "+regex)
+    return regex.test(mockDataRow)
 }
 
 function shuffleArray(array) {
