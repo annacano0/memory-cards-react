@@ -6,11 +6,20 @@ export default function Card({ cardData, isMatched, handleCardReveal, isCovered}
         } 
     }
 
+    function getCellContent(cardNumber){
+        return ( <img
+            src={`/memory_img/${cardNumber}.jpg`}
+            alt={cardNumber}
+          />)
+    }
+
     return (
         <>
             <div onClick={handleClickCard} 
             className={`board-card ${(isCovered) ? 'unflipped' : 'flipped'}`} 
-            data-testid={`board-card${cardData.y + 1}-${cardData.x + 1}`} >{!isCovered && cardData.cardNumber}</div>
+            data-testid={`board-card${cardData.y + 1}-${cardData.x + 1}`} >
+             {!isCovered && getCellContent(cardData.cardNumber)}
+            </div>
         </>
     )
 }
