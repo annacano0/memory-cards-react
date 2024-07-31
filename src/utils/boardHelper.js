@@ -1,4 +1,14 @@
-export function createNewBoard(rows, columns) {
+export function getBoard(mockData, rows, columns){
+    let newBoard;
+    if (mockData) {
+        newBoard = createNewBoardFromMockData(mockData);
+    } else {
+        newBoard = createNewBoard(rows, columns);
+    }
+    return newBoard
+}
+
+function createNewBoard(rows, columns) {
     let board = []
     let cardNumbers=[]
 
@@ -24,7 +34,7 @@ export function createNewBoard(rows, columns) {
     return board
 }
 
-export function createNewBoardFromMockData(mockData) {
+function createNewBoardFromMockData(mockData) {
     let board = []
     let parsedMockData = mockData
     if (typeof mockData === 'string' && mockData.includes('|')){
@@ -63,7 +73,6 @@ function validateMockData(mockData) {
         isValidaData = false
     } else {
         if (mockData.includes('-')) {
-            console.log("entra en validate mock data rows")
             isValidaData = validateMockDataRows(mockData.split('-'))
         }
     }
@@ -73,7 +82,6 @@ function validateMockData(mockData) {
 function validateMockDataRows(mockDataRow){
     const newLocal = '^[[1-9]*'
     const regex = new RegExp(newLocal)
-    console.log("regex is: "+regex)
     return regex.test(mockDataRow)
 }
 
