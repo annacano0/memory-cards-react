@@ -1,7 +1,7 @@
-export default function Card({ cardData, isMatched, handleCardReveal, isCovered}) {
+export default function Card({ cardData, handleCardReveal, isCovered}) {
 
     function handleClickCard() {
-        if(!isMatched&&isCovered){
+        if(isCovered){
             handleCardReveal(cardData)
         } 
     }

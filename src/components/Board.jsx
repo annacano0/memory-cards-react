@@ -3,37 +3,34 @@ import { useEffect, useState } from "react";
 import { createNewBoardFromMockData, createNewBoard } from '../utils/boardHelper.js';
 import Card from "./Card.jsx";
 
-export default function Board({ rows=3, columns=4, mockData }) {
+export default function Board({ rows = 3, columns = 4, mockData, waitingTime = 1000 }) {
     const [board, setBoard] = useState([]);
-    const [matchedCards, setMatchedCards] = useState([]);
-    const [cardsToFlipAgain, setCardsToFlipAgain] = useState([]);
+    const [uncoveredCards, setUncoveredCards] = useState([]);
     const [currentCardPair, setCurrentCardPair] = useState([]);
 
     useEffect(() => {
-        function getNewBoard() {
-            let newBoard;
-            if (mockData) {
-                setMatchedCards([]);
-                setCardsToFlipAgain([]);
-                setCurrentCardPair([]);
-                newBoard = createNewBoardFromMockData(mockData);
-            } else {
-                newBoard = createNewBoard(rows, columns);
-            }
-            setBoard(newBoard);
+        let newBoard;
+        if (mockData) {
+            setUncoveredCards([]);
+            setCurrentCardPair([]);
+            newBoard = createNewBoardFromMockData(mockData);
+        } else {
+            newBoard = createNewBoard(rows, columns);
         }
-        getNewBoard();
+        setBoard(newBoard);
     }, [mockData]);
 
     function handleCardReveal(cardData) {
         if (currentCardPair.length === 0) {
             setCurrentCardPair([cardData]);
+            setUncoveredCards([...uncoveredCards, cardData]);
         } else if (currentCardPair.length === 1) {
             setCurrentCardPair([...currentCardPair, cardData]);
+            setUncoveredCards([...uncoveredCards, cardData]);
             if (!isCardMatch([...currentCardPair, cardData])) {
-                clearCurrentCardPair([]);
+                clearCurrentCardPair();
             } else {
-                setMatchedCards([...matchedCards, cardData.cardNumber]);
+                setUncoveredCards([...uncoveredCards, cardData]);
                 setCurrentCardPair([]);
             }
         }
@@ -41,24 +38,25 @@ export default function Board({ rows=3, columns=4, mockData }) {
 
     function clearCurrentCardPair() {
         setTimeout(() => {
-            setCardsToFlipAgain([]);
+            let removedLastTwoCards = uncoveredCards.slice(0, -2);
+            setUncoveredCards(removedLastTwoCards);
             setCurrentCardPair([]);
-        }, 2000);
+        }, waitingTime);
     }
 
     function isCardMatch(cards) {
-        let match = false
-        if(cards[0].cardNumber===cards[1].cardNumber) match=true
-        return  match;
+        let match = false;
+        if (cards[0].cardNumber === cards[1].cardNumber) match = true;
+        if (match) console.log("It's a match");
+        return match;
     }
 
-    function isCellCovered(card) {
-        let isCellCovered=true
-        if( matchedCards.includes(card.cardNumber) || cardsToFlipAgain.includes(card) || currentCardPair.includes(card)){
-            isCellCovered=false
-        }
-        return isCellCovered
-        
+    function isCellCovered(card) { 
+        return !uncoveredCards.some(uncoveredCard => //checks if an object in uncoveredCards has the same properties as the card param.
+            uncoveredCard.y === card.y &&
+            uncoveredCard.x === card.x &&
+            uncoveredCard.cardNumber === card.cardNumber
+        );
     }
 
     return (
@@ -70,7 +68,6 @@ export default function Board({ rows=3, columns=4, mockData }) {
                             <Card
                                 key={cellIndex}
                                 cardData={card}
-                                isMatched={matchedCards.includes(card.cardNumber)}
                                 handleCardReveal={handleCardReveal}
                                 isCovered={isCellCovered(card)}
                             />
