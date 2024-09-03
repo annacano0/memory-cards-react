@@ -84,7 +84,6 @@ defineFeature(feature, (test) => {
     then(/^the card \("(.*)", "(.*)"\) and the card \("(.*)", "(.*)"\) should be flipped$/, (card1RowPos, card1ColPos, card2RowPos, card2ColPos) => {
       expect(steps.checkCardIsFlipped(card1RowPos, card1ColPos)).toBe(true)
       expect(steps.checkCardIsFlipped(card2RowPos, card2ColPos)).toBe(true)
-
     })
   })
 
